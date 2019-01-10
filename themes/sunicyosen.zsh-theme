@@ -1,6 +1,18 @@
+## zsh colors
+# black   or 0	
+# red     or 1
+# green   or 2
+# yellow  or 3
+# blue    or 4	
+# magenta or 5
+# cyan    or 6
+# white   or 7
+##------------
+
 local ret_status="%(?:%{$fg_bold[green]%}<:%{$fg_bold[red]%}<)"
 local ret_suf_status="%(?:%{$fg_bold[green]%}>:%{$fg_bold[red]%}>)"
-PROMPT='$(git_prompt_info)${ret_status} %{$fg[cyan]%}%c ${ret_suf_status} %{$reset_color%}'
+local ret_dir="%(?:%{$fg_bold[green]%}%c:%{$fg_bold[red]%}%c)"
+PROMPT='$(git_prompt_info)${ret_status} ${ret_dir} ${ret_suf_status} %{$reset_color%}'
 #'c' is current directory and 'd' is absolute directory
 
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}[git:(%{$fg[red]%}"
