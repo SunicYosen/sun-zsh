@@ -18,4 +18,4 @@ PROMPT='$(git_prompt_info)${ret_status} ${ret_dir} ${ret_suf_status} %{$reset_co
 ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}[git:<%{$fg[magenta]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}%{$fg_bold[blue]%}]"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}>%{$fg[yellow]%}✗ "
-ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
+ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}>"
