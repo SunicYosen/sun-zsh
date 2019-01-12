@@ -1,3 +1,21 @@
+##Add My shell
+
+# obtain TrackPoint ID from xinput list
+StickDeviceID=$(xinput list | grep Stick | cut -f 2 | grep -Eo '[0-9]{1,}')
+
+if [ -n "$StickDeviceID" ]; then
+        # obtain properties from xinput list-props "$TP_ID"
+        StickSpeedID=$(xinput list-props "$StickDeviceID" | grep 'libinput Accel Speed (' | cut -f 2 | grep -Eo '[0-9]{1,}')
+        # set the speed you want [-1,1]
+        xinput set-prop "$StickDeviceID" "$StickSpeedID" 1
+	# Disable middle click paste.
+	xinput set-button-map "$StickDeviceID" 1 0 3
+fi
+
+##-------------------------------------------------------------##
+## Add My environment
+## ADD FROM HERE
+
 #MAKEFLAGS
 export MAKEFLAGS=-j3
 
