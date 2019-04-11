@@ -9,7 +9,7 @@ if [ -n "$StickDeviceID" ]; then
         # set the speed you want [-1,1]
         xinput set-prop "$StickDeviceID" "$StickSpeedID" 1
 	# Disable middle click paste.
-	xinput set-button-map "$StickDeviceID" 1 0 3
+#	xinput set-button-map "$StickDeviceID" 1 0 3
 fi
 
 ##-------------------------------------------------------------##

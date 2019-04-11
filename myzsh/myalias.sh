@@ -26,3 +26,13 @@ alias ic='virtuoso & exit'
 
 # Andriod Studio
 alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+
+#apt-fast
+alias apt=apt-fast
+
+# Default Applications Command
+alias -s gz='tar -xzvf'
+alias -s tgz='tar -xzvf'
+alias -s zip='unzip'
+alias -s bz2='tar -xjvf'
+alias -s pdf='evince'
