@@ -17,14 +17,14 @@ fi
 ## ADD FROM HERE
 
 #MAKEFLAGS
-export MAKEFLAGS=-j3
+export MAKEFLAGS=-j4
 
 #Qt
 export QTHOME=/home/SoftwareI/Qt
 export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bint
 export MYPATH=$MYPATH:$QTHOME/5.12.0/gcc_64/bin
 export QT_WEBKIT=true
-export QT_QPA_PLATFORMTHEME="qt5ct"
+#export QT_QPA_PLATFORMTHEME="qt5ct"
 
 #Latex
 export TEXLIVEHOME=/home/SoftwareI/TexLive
@@ -33,37 +33,37 @@ export MANPATH=$MANPATH:$TEXLIVEHOME/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:$TEXLIVEHOME/texmf-dist/doc/info
 
 #WPS
-#alias ppt='wpp'
-#alias excel='et'
-#alias word='wps'
+# alias ppt='wpp'
+# alias excel='et'
+# alias word='wps'
 
 #RISCV Tools
-export RISCV=/home/SoftwareI/RISCV
-export RISCV64=$RISCV/riscv64
-export RISCV32=$RISCV/riscv32
-export RISCV_GNU=$RISCV/riscv-gnu-toolchain
-export RISCV_QEMU=$RISCV/riscv-qemu
-export MYPATH=$MYPATH:$RISCV64/bin 
-export MYPATH=$MYPATH:$RISCV32/bin
-export MYPATH=$MYPATH:$RISCV_GNU/riscv64/bin
-export MYPATH=$MYPATH:$RISCV_GNU/riscv32/bin
-export MYPATH=$MYPATH:$RISCV_QEMU/bin
-export RISCV=$RISCV64
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RISCV64/lib
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RISCV32/lib
+export RISCV=/home/SoftwareI/RISCV/riscv64
+export RISCV64=$RISCV
+# export RISCV32=$RISCV
+# export RISCV_GNU=$RISCV/riscv-gnu-toolchain
+# export RISCV_QEMU=$RISCV/riscv-qemu
+export MYPATH=$MYPATH:$RISCV/bin
+# export MYPATH=$MYPATH:$RISCV32/bin
+# export MYPATH=$MYPATH:$RISCV_GNU/riscv64/bin
+# export MYPATH=$MYPATH:$RISCV_GNU/riscv32/bin
+# export MYPATH=$MYPATH:$RISCV_QEMU/bin
+# export RISCV=$RISCV64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RISCV64/lib
+# export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RISCV32/lib
 
 # Verilator
 export VERILATOR_ROOT=/home/SoftwareI/Verilator
 export MYPATH=$MYPATH:$VERILATOR_ROOT/bin:$VERILATOR_ROOT/share/verilator/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$VERILATOR_ROOT/share/pkgconfig
 export MANPATH=$MANPATH:$VERILATOR_ROOT/share/man
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VERILATOR_ROOT/include
+export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/include
 
 # MATLAB
 export MATLABHOME=/home/SoftwareII/Matlab
 export MYPATH=$MYPATH:$MATLABHOME/bin
-#alias matlab_nodisplay='matlab -nosplash -nodesktop'
-#alias matlab_run='matlab -nosplash -nodesktop -r'
+alias matlab_nodisplay='matlab -nosplash -nodesktop'
+alias matlab_run='matlab -nosplash -nodesktop -r'
 
 #----------------Mentor----------------#
 export MGC_HOME=/home/SoftwareI/Mentor
@@ -80,7 +80,7 @@ export MYPATH=$MYPATH:$SCLBIN
 #alias snplmd='$SCLBIN/lmgrd -c $LM_LICENSE_FILE >> /home/sun/Documents/snplmd.log'
 
 #--------Hspice--------#
-export HSPICE_HOME=$SYNOPSYS_HOME/Hspice_v2017.03
+export HSPICE_HOME=$SYNOPSYS_HOME/Hspice_v2018.09
 export MYPATH=$MYPATH:$HSPICE_HOME/hspice/bin
 
 #--------DC--------#
@@ -94,8 +94,8 @@ export VCS_HOME=$SYNOPSYS_HOME/VCS_v2017.03
 export DVE_HOME=$VCS_HOME/gui/dve
 export MYPATH=$MYPATH:$DVE_HOME/bin
 export MYPATH=$MYPATH:$VCS_HOME/bin
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:/$VCS_HOME/include
-export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/$VCS_HOME/include
+export C_INCLUDE_PATH=$VCS_HOME/include
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCS_HOME/include
 # alias dve="dve -full64 &"
 
 #--------Verdi3--------#
@@ -116,9 +116,9 @@ export LC_HOME=$SYNOPSYS_HOME/LibraryCompiler_v2016.12
 export MYPATH=$MYPATH:$LC_HOME/bin
 export MYPATH=$MYPATH:$LC_HOME/admin/install/lc/bin
 
-#--------Custom Explorer--------#
-export CX_HOME=$SYNOPSYS_HOME/CustomExplorer_v2016.06
-export MYPATH=$MYPATH:$CX_HOME/bin
+#--------WaveView Explorer--------#
+export WV_HOME=$SYNOPSYS_HOME/WaveView_v2018.09
+export MYPATH=$MYPATH:$WV_HOME/bin
 
 #--------Formality--------#
 export FM_HOME=$SYNOPSYS_HOME/Formality_v2016.03
@@ -179,16 +179,32 @@ alias vivado='vivado -tempDir /home/sun/Documents/Xilinx -log /home/sun/Document
 export BROWSER=/usr/bin/x-www-browser
 export HTML=/usr/bin/x-www-browser
 
+######### FCITX #########
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+# export XMODIFIERS=@im=fcitx
+
+
 ######### IDEA #########
-#export IDEA_HOME=/home/SoftwareI/Idea
-#export IDEA_ROOT=$IDEA_HOME/idea-IU-182.5107.16
-#export MYPATH=$MYPATH:$IDEA_ROOT/bin
+# export IDEA_HOME=/home/SoftwareI/Idea
+# export IDEA_ROOT=$IDEA_HOME/idea-IU-182.5107.16
+# export MYPATH=$MYPATH:$IDEA_ROOT/bin
 
 ########AndroidStudio##########
 export ANDROIDSTUDIO_HOME=/home/SoftwareII/Android/AndroidStudio
 export MYPATH=$MYPATH:$ANDROIDSTUDIO_HOME/bin
 export ANDROID_SDK_HOME=/home/SoftwareII/Android/AndroidSDK
-#alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+# alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+
+#GEMS
+# Install Ruby Gems to ~/.gems
+export GEM_HOME="$HOME/.gems"
+export JEKYLL_GITHUB_TOKEN=57517b00f172776b41d61b79ebd918fd9561eea1
+export PATH="$HOME/.gems/bin:$PATH"
+
+#TVM
+export TVM_HOME=/home/sun/File/TVM/Projects/tvm
+export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:${PYTHONPATH}
 
 ##ADD END HERE
 ##-------------------------------------------------------------##

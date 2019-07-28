@@ -109,3 +109,28 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
 setopt no_nomatch
+
+# pip zsh completion start
+# function _pip_completion {
+#   local words cword
+#   read -Ac words
+#   read -cn cword
+#   reply=( $( COMP_WORDS="$words[*]" \
+#              COMP_CWORD=$(( cword-1 )) \
+#              PIP_AUTO_COMPLETE=1 $words[1] ) )
+# }
+# compctl -K _pip_completion pip
+# pip zsh completion end
+#
+# pip3 zsh completion start
+# function _pip3_completion {
+#   local words cword
+#   read -Ac words
+#   read -cn cword
+#   reply=( $( COMP_WORDS="$words[*]" \
+#              COMP_CWORD=$(( cword-1 )) \
+#              PIP_AUTO_COMPLETE=1 $words[1] ) )
+# }
+# compctl -K _pip3_completion pip3
+# pip3 zsh completion end
+
