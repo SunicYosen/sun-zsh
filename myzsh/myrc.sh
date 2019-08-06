@@ -21,9 +21,13 @@ export MAKEFLAGS=-j4
 
 #Qt
 export QTHOME=/home/SoftwareI/Qt
-export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bint
+export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
 export MYPATH=$MYPATH:$QTHOME/5.12.0/gcc_64/bin
 export QT_WEBKIT=true
+export QTDIR=$QTHOME/5.12.0/gcc_64
+export PATH=$QTDIR/bin:$PATH
+export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+
 #export QT_QPA_PLATFORMTHEME="qt5ct"
 
 #Latex
@@ -194,7 +198,13 @@ export HTML=/usr/bin/x-www-browser
 export ANDROIDSTUDIO_HOME=/home/SoftwareII/Android/AndroidStudio
 export MYPATH=$MYPATH:$ANDROIDSTUDIO_HOME/bin
 export ANDROID_SDK_HOME=/home/SoftwareII/Android/AndroidSDK
-# alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+export ANDROID_HOME=$ANDROID_SDK_HOME
+export MYPATH=$MYPATH:$ANDROID_SDK_HOME/ndk-bundle/
+alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+
+#Gradle
+export GRADLE_HOME=/opt/gradle
+export MYPATH=$MYPATH:$GRADLE_HOME/bin
 
 #GEMS
 # Install Ruby Gems to ~/.gems
@@ -204,7 +214,10 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 #TVM
 export TVM_HOME=/home/sun/File/TVM/Projects/tvm
-export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:${PYTHONPATH}
+export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:${PYTHONPATH}
+
+# flatpak
+# export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sun/.local/share/flatpak/exports/share
 
 ##ADD END HERE
 ##-------------------------------------------------------------##
