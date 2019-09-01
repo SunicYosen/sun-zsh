@@ -61,7 +61,7 @@ export VERILATOR_ROOT=/home/SoftwareI/Verilator
 export MYPATH=$MYPATH:$VERILATOR_ROOT/bin:$VERILATOR_ROOT/share/verilator/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$VERILATOR_ROOT/share/pkgconfig
 export MANPATH=$MANPATH:$VERILATOR_ROOT/share/man
-export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/include
+export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/share/verilator/include
 
 # MATLAB
 export MATLABHOME=/home/SoftwareII/Matlab
@@ -214,10 +214,20 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 #TVM
 export TVM_HOME=/home/sun/File/TVM/Projects/tvm
-export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:${PYTHONPATH}
-
+export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:$TVM_HOME/vta/apps/tsim_example/python:${PYTHONPATH}
+export VERILATOR_INC_DIR=$VERILATOR_ROOT/share/verilator/include
 # flatpak
 # export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sun/.local/share/flatpak/exports/share
+
+# FCITX5
+# export GTK_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx5
+# export QT_IM_MODULE=fcitx5
+
+# export GTK_IM_MODULE=fcitx5
+# export QT_IM_MODULE=fcitx5
+# export QT5_IM_MODULE=fcitx5
+# export XMODIFIERS=@im=fcitx5
 
 ##ADD END HERE
 ##-------------------------------------------------------------##
