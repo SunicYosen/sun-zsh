@@ -28,7 +28,7 @@ alias ic='virtuoso & exit'
 alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
 
 #apt-fast
-alias apt=apt-fast
+# alias apt=apt
 
 # Default Applications Command
 alias -s gz='tar -xzvf'

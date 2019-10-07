@@ -1,4 +1,4 @@
-##Add My shell
+## Add My shell
 
 # obtain TrackPoint ID from xinput list
 StickDeviceID=$(xinput list | grep Stick | cut -f 2 | grep -Eo '[0-9]{1,}')
@@ -16,17 +16,22 @@ fi
 ## Add My environment
 ## ADD FROM HERE
 
+export LD_LIBRARY_PATH=/usr/lib
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
 #MAKEFLAGS
 export MAKEFLAGS=-j4
 
 #Qt
 export QTHOME=/home/SoftwareI/Qt
-export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
-export MYPATH=$MYPATH:$QTHOME/5.12.0/gcc_64/bin
+export QTDIR=$QTHOME/5.13.1/gcc_64
 export QT_WEBKIT=true
-export QTDIR=$QTHOME/5.12.0/gcc_64
-export PATH=$QTDIR/bin:$PATH
+export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
+export MYPATH=$MYPATH:$QTDIR/bin
+export PKG_CONFIG_PATH=$QTDIR/lib/pkgconfig
+export QT_PLUGIN_PATH=$QTDIR/plugins/
 export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$QT_PLUGIN_PATH/platforms:$LD_LIBRARY_PATH
 
 #export QT_QPA_PLATFORMTHEME="qt5ct"
 
@@ -62,6 +67,10 @@ export MYPATH=$MYPATH:$VERILATOR_ROOT/bin:$VERILATOR_ROOT/share/verilator/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$VERILATOR_ROOT/share/pkgconfig
 export MANPATH=$MANPATH:$VERILATOR_ROOT/share/man
 export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/share/verilator/include
+<<<<<<< HEAD
+=======
+export VERILATOR_INC_DIR=$CPLUS_INCLUDE_PATH
+>>>>>>> master
 
 # MATLAB
 export MATLABHOME=/home/SoftwareII/Matlab
@@ -81,7 +90,7 @@ export LM_LICENSE_FILE=$SYNOPSYS_HOME/Licenses/synopsys0.dat
 #--------SCL--------#
 export SCLBIN=$SYNOPSYS_HOME/SCL_v2018.06/amd64/bin
 export MYPATH=$MYPATH:$SCLBIN
-#alias snplmd='$SCLBIN/lmgrd -c $LM_LICENSE_FILE >> /home/sun/Documents/snplmd.log'
+alias snplmd='$SCLBIN/lmgrd -c $LM_LICENSE_FILE >> /home/sun/Documents/snplmd.log'
 
 #--------Hspice--------#
 export HSPICE_HOME=$SYNOPSYS_HOME/Hspice_v2018.09
@@ -100,6 +109,7 @@ export MYPATH=$MYPATH:$DVE_HOME/bin
 export MYPATH=$MYPATH:$VCS_HOME/bin
 export C_INCLUDE_PATH=$VCS_HOME/include
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCS_HOME/include
+
 # alias dve="dve -full64 &"
 
 #--------Verdi3--------#
@@ -199,7 +209,8 @@ export ANDROIDSTUDIO_HOME=/home/SoftwareII/Android/AndroidStudio
 export MYPATH=$MYPATH:$ANDROIDSTUDIO_HOME/bin
 export ANDROID_SDK_HOME=/home/SoftwareII/Android/AndroidSDK
 export ANDROID_HOME=$ANDROID_SDK_HOME
-export MYPATH=$MYPATH:$ANDROID_SDK_HOME/ndk-bundle/
+export MYPATH=$MYPATH:$ANDROID_SDK_HOME/ndk-bundle
+# export MYPATH=$MYPATH:$ANDROID_SDK_HOME/platform-tools
 alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
 
 #Gradle
@@ -214,6 +225,7 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 #TVM
 export TVM_HOME=/home/sun/File/TVM/Projects/tvm
+<<<<<<< HEAD
 export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:$TVM_HOME/vta/apps/tsim_example/python:${PYTHONPATH}
 export VERILATOR_INC_DIR=$VERILATOR_ROOT/share/verilator/include
 # flatpak
@@ -228,6 +240,27 @@ export VERILATOR_INC_DIR=$VERILATOR_ROOT/share/verilator/include
 # export QT_IM_MODULE=fcitx5
 # export QT5_IM_MODULE=fcitx5
 # export XMODIFIERS=@im=fcitx5
+=======
+export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:${PYTHONPATH}
+
+#PRIVOXY
+# export https_proxy=http://127.0.0.1:8118
+# export http_proxy=http://127.0.0.1:8118
+# export ftp_proxy=http://127.0.0.1:8118
+# export HTTP_PROXY=$http_proxy
+# export HTTP_PROXY=$https_proxy
+# export FTP_PROXY=$ftp_proxy
+
+# flatpak
+# export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sun/.local/share/flatpak/exports/share
+
+# MyBin
+export MYPATH=$MYPATH:/home/SoftwareI/bin
+
+
+# 
+export MYPATH=$MYPATH:/home/sun/.local/bin
+>>>>>>> master
 
 ##ADD END HERE
 ##-------------------------------------------------------------##
