@@ -222,22 +222,6 @@ export PATH="$HOME/.gems/bin:$PATH"
 
 #TVM
 export TVM_HOME=/home/sun/File/TVM/Projects/tvm
-<<<<<<< HEAD
-export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:$TVM_HOME/vta/apps/tsim_example/python:${PYTHONPATH}
-export VERILATOR_INC_DIR=$VERILATOR_ROOT/share/verilator/include
-# flatpak
-# export XDG_DATA_DIRS=$XDG_DATA_DIRS:/var/lib/flatpak/exports/share:/home/sun/.local/share/flatpak/exports/share
-
-# FCITX5
-# export GTK_IM_MODULE=fcitx5
-# export XMODIFIERS=@im=fcitx5
-# export QT_IM_MODULE=fcitx5
-
-# export GTK_IM_MODULE=fcitx5
-# export QT_IM_MODULE=fcitx5
-# export QT5_IM_MODULE=fcitx5
-# export XMODIFIERS=@im=fcitx5
-=======
 export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:${PYTHONPATH}
 
 #PRIVOXY
@@ -257,7 +241,6 @@ export MYPATH=$MYPATH:/home/SoftwareI/bin
 
 # 
 export MYPATH=$MYPATH:/home/sun/.local/bin
->>>>>>> master
 
 ##ADD END HERE
 ##-------------------------------------------------------------##
