@@ -67,10 +67,7 @@ export MYPATH=$MYPATH:$VERILATOR_ROOT/bin:$VERILATOR_ROOT/share/verilator/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$VERILATOR_ROOT/share/pkgconfig
 export MANPATH=$MANPATH:$VERILATOR_ROOT/share/man
 export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/share/verilator/include
-<<<<<<< HEAD
-=======
 export VERILATOR_INC_DIR=$CPLUS_INCLUDE_PATH
->>>>>>> master
 
 # MATLAB
 export MATLABHOME=/home/SoftwareII/Matlab
