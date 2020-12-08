@@ -32,6 +32,9 @@ alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
 # Vivado
 alias vivado='vivado -tempDir /home/sun/Documents/Xilinx -log /home/sun/Documents/Xilinx/vivado.log -journal /home/sun/Documents/Xilinx/vivado.jou'
 
+# Scrcpy
+# alias cast='scrcpy --bit-rate 16M'
+
 #apt-fast
 # alias apt=apt
 

@@ -1,16 +1,16 @@
 ## Add My shell
 
 # ---------- obtain TrackPoint ID from xinput list ---------- # 
-StickDeviceID=$(xinput list | grep Stick | cut -f 2 | grep -Eo '[0-9]{1,}')
+# StickDeviceID=$(xinput list | grep Stick | cut -f 2 | grep -Eo '[0-9]{1,}')
 
-if [ -n "$StickDeviceID" ]; then
+# if [ -n "$StickDeviceID" ]; then
         # obtain properties from xinput list-props "$TP_ID"
-        StickSpeedID=$(xinput list-props "$StickDeviceID" | grep 'libinput Accel Speed (' | cut -f 2 | grep -Eo '[0-9]{1,}')
+#        StickSpeedID=$(xinput list-props "$StickDeviceID" | grep 'libinput Accel Speed (' | cut -f 2 | grep -Eo '[0-9]{1,}')
         # set the speed you want [-1,1]
-        xinput set-prop "$StickDeviceID" "$StickSpeedID" 1
+#        xinput set-prop "$StickDeviceID" "$StickSpeedID" 1
 	# Disable middle click paste.
 # 	xinput set-button-map "$StickDeviceID" 1 0 3
-fi
+# fi
 
 ## ------------------------------------------------------------ ## 
 ## -------------------- Add My environment -------------------- ##
@@ -27,7 +27,7 @@ export CUDA_VISIBLE_DEVICE=-1
 
 # ---------- Qt ----------#
 export QTHOME=/home/SoftwareI/qt
-export QTDIR=$QTHOME/5.15.0/gcc_64
+export QTDIR=$QTHOME/5.15.1/gcc_64
 export QT_WEBKIT=true
 export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
 export MYPATH=$MYPATH:$QTDIR/bin
@@ -35,8 +35,8 @@ export PKG_CONFIG_PATH=$QTDIR/lib/pkgconfig
 export QT_PLUGIN_PATH=$QTDIR/plugins/
 export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
 export LD_LIBRARY_PATH=$QT_PLUGIN_PATH/platforms:$LD_LIBRARY_PATH
-export QT_SELECT=qt5.15.0
-export QT_STYLE_OVERRIDE=cleanlooks
+export QT_SELECT=qt5.15.1
+# export QT_STYLE_OVERRIDE=cleanlooks
 export QT_QPA_PLATFORMTHEME=gtk3
 
 # ---------- OPENCV ----------# 
@@ -119,7 +119,7 @@ export VCS_HOME=$SYNOPSYS_HOME/VCS_v2018.09
 export DVE_HOME=$VCS_HOME/gui/dve
 export MYPATH=$MYPATH:$DVE_HOME/bin
 export MYPATH=$MYPATH:$VCS_HOME/bin
-export C_INCLUDE_PATH=$VCS_HOME/include
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$VCS_HOME/include
 export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$VCS_HOME/include
 
 # alias dve="dve -full64 &"
@@ -209,17 +209,18 @@ export MYPATH=$MYPATH:$XILINXHOME/DocNav
 export MYPATH=$MYPATH:$XILINXHOME/xic/bin
 export BROWSER=/usr/bin/x-www-browser
 export HTML=/usr/bin/x-www-browser
-source $VIVADOHOME/settings64.sh
+# source $VIVADOHOME/settings64.sh
 
 # -------------------- IDEA -------------------- # 
 # export IDEA_HOME=/home/SoftwareI/Idea
 # export IDEA_ROOT=$IDEA_HOME/idea-IU-182.5107.16
 # export MYPATH=$MYPATH:$IDEA_ROOT/bin
 
-# -------------------- AndroidStudio -------------------- # 
-export ANDROIDSTUDIO_HOME=/home/SoftwareII/Android/AndroidStudio
+# -------------------- AndroidStudio -------------------- #
+export ANDROID_HOME=/home/SoftwareII/android
+export ANDROIDSTUDIO_HOME=$ANDROID_HOME/android-studio
 export MYPATH=$MYPATH:$ANDROIDSTUDIO_HOME/bin
-export ANDROID_SDK_HOME=/home/SoftwareII/Android/AndroidSDK
+export ANDROID_SDK_HOME=$ANDROID_HOME/android-sdk
 export ANDROID_HOME=$ANDROID_SDK_HOME
 export MYPATH=$MYPATH:$ANDROID_SDK_HOME/ndk-bundle
 # export MYPATH=$MYPATH:$ANDROID_SDK_HOME/platform-tools
@@ -236,8 +237,11 @@ export JEKYLL_GITHUB_TOKEN=57517b00f172776b41d61b79ebd918fd9561eea1
 export PATH="$HOME/.gems/bin:$PATH"
 
 # -------------------- TVM -------------------- #
-export TVM_HOME=/home/sun/File/TVM/projects/tvm
-export PYTHONPATH=$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/nnvm/python:$TVM_HOME/vta/python:${PYTHONPATH}
+export TVM_HOME=/home/sun/File/TVM/projects/tvm-org
+export PYTHONPATH=$PYTHONPATH:$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/vta/python
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TVM_HOME/build:$TVM_HOME/3rdparty/vta-hw/build
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$TVM_HOME/include:$TVM_HOME/3rdparty/dmlc-core/include:$TVM_HOME/3rdparty/vta-hw/include:$TVM_HOME/3rdparty/dlpack/include
+export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$TVM_HOME/include:$TVM_HOME/3rdparty/dmlc-core/include:$TVM_HOME/3rdparty/vta-hw/include:$TVM_HOME/3rdparty/dlpack/include
 
 # PRIVOXY
 # export https_proxy=http://127.0.0.1:1080
