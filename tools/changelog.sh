@@ -86,11 +86,17 @@ function parse-commit {
 
   # Return subject if the body or subject match the breaking change format
   function commit:is-breaking {
-    local subject="$1" body="$2"
+    local subject="$1" body="$2" message
 
     if [[ "$body" =~ "BREAKING CHANGE: (.*)" || \
       "$subject" =~ '^[^ :\)]+\)?!: (.*)$' ]]; then
-      echo "${match[1]}"
+      message="${match[1]}"
+      # remove CR characters (might be inserted in GitHub UI commit description form)
+      message="${message//$'\r'/}"
+      # skip next paragraphs (separated by two newlines or more)
+      message="${message%%$'\n\n'*}"
+      # ... and replace newlines with spaces
+      echo "${message//$'\n'/ }"
     else
       return 1
     fi
@@ -107,6 +113,11 @@ function parse-commit {
       return 1
     fi
   }
+
+  # Ignore commit if it is a merge commit
+  if [[ $(command git show -s --format=%p $1 | wc -w) -gt 1 ]]; then
+    return
+  fi
 
   # Parse commit with hash $1
   local hash="$1" subject body warning rhash
@@ -170,6 +181,12 @@ function display-release {
     return
   fi
 
+  # Get length of longest scope for padding
+  local max_scope=0
+  for hash in ${(k)scopes}; do
+    max_scope=$(( max_scope < ${#scopes[$hash]} ? ${#scopes[$hash]} : max_scope ))
+  done
+
   ##* Formatting functions
 
   # Format the hash according to output format
@@ -209,18 +226,13 @@ function display-release {
     #* Uses $scopes (A) and $hash from outer scope
     local scope="${1:-${scopes[$hash]}}"
 
-    # Get length of longest scope for padding
-    local max_scope=0 padding=0
-    for hash in ${(k)scopes}; do
-      max_scope=$(( max_scope < ${#scopes[$hash]} ? ${#scopes[$hash]} : max_scope ))
-    done
-
     # If no scopes, exit the function
     if [[ $max_scope -eq 0 ]]; then
       return
     fi
 
     # Get how much padding is required for this scope
+    local padding=0
     padding=$(( max_scope < ${#scope} ? 0 : max_scope - ${#scope} ))
     padding="${(r:$padding:: :):-}"
 
@@ -274,15 +286,21 @@ function display-release {
     (( $#breaking != 0 )) || return 0
 
     case "$output" in
+    text) fmt:header "\e[31mBREAKING CHANGES" 3 ;;
     raw) fmt:header "BREAKING CHANGES" 3 ;;
-    text|md) fmt:header "⚠ BREAKING CHANGES" 3 ;;
+    md) fmt:header "BREAKING CHANGES ⚠" 3 ;;
     esac
 
-    local hash subject
+    local hash message
+    local wrap_width=$(( (COLUMNS < 100 ? COLUMNS : 100) - 3 ))
     for hash message in ${(kv)breaking}; do
-      echo " - $(fmt:hash) $(fmt:subject "${message}")"
-    done | sort
-    echo
+      # Format the BREAKING CHANGE message by word-wrapping it at maximum 100
+      # characters (use $COLUMNS if smaller than 100)
+      message="$(fmt -w $wrap_width <<< "$message")"
+      # Display hash and scope in their own line, and then the full message with
+      # blank lines as separators and a 3-space left padding
+      echo " - $(fmt:hash) $(fmt:scope)\n\n$(fmt:subject "$message" | sed 's/^/   /')\n"
+    done
   }
 
   function display:type {
@@ -340,16 +358,23 @@ function display-release {
 
 function main {
   # $1 = until commit, $2 = since commit
-  # $3 = output format (--raw|--text|--md)
   local until="$1" since="$2"
+
+  # $3 = output format (--text|--raw|--md)
+  # --md:   uses markdown formatting
+  # --raw:  outputs without style
+  # --text: uses ANSI escape codes to style the output
   local output=${${3:-"--text"}#--*}
 
   if [[ -z "$until" ]]; then
     until=HEAD
   fi
 
-  # If $since is not specified, look up first version tag before $until
   if [[ -z "$since" ]]; then
+    # If $since is not specified:
+    # 1) try to find the version used before updating
+    # 2) try to find the first version tag before $until
+    since=$(command git config --get oh-my-zsh.lastVersion 2>/dev/null) || \
     since=$(command git describe --abbrev=0 --tags "$until^" 2>/dev/null) || \
     unset since
   elif [[ "$since" = --all ]]; then
@@ -373,9 +398,7 @@ function main {
 
   # Get commit list from $until commit until $since commit, or until root
   # commit if $since is unset, in short hash form.
-  # --first-parent is used when dealing with merges: it only prints the
-  # merge commit, not the commits of the merged branch.
-  command git rev-list --first-parent --abbrev-commit --abbrev=7 ${since:+$since..}$until | while read hash; do
+  command git rev-list --abbrev-commit --abbrev=7 ${since:+$since..}$until | while read hash; do
     # Truncate list on versions with a lot of commits
     if [[ -z "$since" ]] && (( ++read_commits > 35 )); then
       truncate=1
