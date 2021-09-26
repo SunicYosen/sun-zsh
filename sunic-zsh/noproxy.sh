@@ -1,0 +1,9 @@
+# PROXY
+export https_proxy=""
+export http_proxy=""
+export ftp_proxy=""
+export HTTP_PROXY=""
+export HTTPS_PROXY=""
+export FTP_PROXY=""
+export SOCKS_PROXY=""
+export socks_proxy=""
