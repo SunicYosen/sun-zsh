@@ -12,6 +12,12 @@
 # 	xinput set-button-map "$StickDeviceID" 1 0 3
 # fi
 
+# fbterm
+# if [[ "$TERM" = linux ]] && [[ "$(ps otty= $$)" =~ tty ]] && type fbterm &> /dev/null; then 
+# 	fbterm
+# fi 
+
+
 ## ------------------------------------------------------------ ## 
 ## -------------------- Add My environment -------------------- ##
 ## --------------------    ADD FROM HERE   -------------------- ##
@@ -26,18 +32,19 @@ export MAKEFLAGS=-j3
 export CUDA_VISIBLE_DEVICE=-1
 
 # ---------- Qt ----------#
-export QTHOME=/home/SoftwareI/qt
-export QTDIR=$QTHOME/5.15.1/gcc_64
-export QT_WEBKIT=true
-export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
-export MYPATH=$MYPATH:$QTDIR/bin
-export PKG_CONFIG_PATH=$QTDIR/lib/pkgconfig
-export QT_PLUGIN_PATH=$QTDIR/plugins/
-export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
-export LD_LIBRARY_PATH=$QT_PLUGIN_PATH/platforms:$LD_LIBRARY_PATH
-export QT_SELECT=qt5.15.1
+# export QTHOME=/home/SoftwareI/qt
+# export QTDIR=$QTHOME/5.15.2/gcc_64 
+# export QT_WEBKIT=true
+# export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
+# export MYPATH=$MYPATH:$QTDIR/bin
+# export PKG_CONFIG_PATH=$QTDIR/lib/pkgconfig
+# export QT_PLUGIN_PATH=$QTDIR/plugins/
+# export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=$QT_PLUGIN_PATH/platforms:$LD_LIBRARY_PATH
+# export QT_SELECT=qt5.15.2
 # export QT_STYLE_OVERRIDE=cleanlooks
-export QT_QPA_PLATFORMTHEME=gtk3
+# export QT_QPA_PLATFORMTHEME=gtk3
+export QT_LOGGING_RULES='*=false'
 
 # ---------- OPENCV ----------# 
 export OPENCV_HOME=/home/SoftwareI/opencv
@@ -85,8 +92,10 @@ alias matlab_run='matlab -nosplash -nodesktop -r'
 
 # ---------- Mentor ---------- # 
 export MGC_HOME=/home/SoftwareI/mentor
+export MODELSIM_PATH=$MGC_HOME/modelsim_intel
 export QUESTASIM_PATH=$MGC_HOME/questasim
 export MYPATH=$MYPATH:$QUESTASIM_PATH/questasim/bin
+# export MYPATH=$MYPATH:$MODELSIM_PATH/modelsim_ase/bin
 export MGLS_LICENSE_FILE=$MGC_HOME/license/LICENSE
 
 # ---------- UVM ---------- #
@@ -201,15 +210,19 @@ export MYPATH=$MYPATH:$CONFRMLHOME/bin:$CONFRMLHOME/tools.lnx86/bin:$CONFRMLHOME
 
 ## ## ## ## VIVADO## ## ## # 
 export XILINXHOME=/home/SoftwareII/Xilinx
-export VIVADOHOME=$XILINXHOME/Vivado/2018.3
-export XILINXSDK=$XILINXHOME/SDK/2018.3
+export VIVADOHOME=$XILINXHOME/Vivado/2020.2 
+export XILINXVITIS=$XILINXHOME/Vitis/2020.2 
+export XILINXHLS=$XILINXHOME/Vitis_HLS/2020.2 
 export MYPATH=$MYPATH:$VIVADOHOME/bin
-export MYPATH=$MYPATH:$XILINXSDK/bin
+export MYPATH=$MYPATH:$XILINXVITIS/bin
+export MYPATH=$MYPATH:$XILINXHLS/bin
 export MYPATH=$MYPATH:$XILINXHOME/DocNav
 export MYPATH=$MYPATH:$XILINXHOME/xic/bin
 export BROWSER=/usr/bin/x-www-browser
 export HTML=/usr/bin/x-www-browser
 # source $VIVADOHOME/settings64.sh
+# source $XILINXVITIS/settings64.sh 
+# source $XILINXHLS/settings64.sh
 
 # -------------------- IDEA -------------------- # 
 # export IDEA_HOME=/home/SoftwareI/Idea
@@ -237,7 +250,7 @@ export JEKYLL_GITHUB_TOKEN=57517b00f172776b41d61b79ebd918fd9561eea1
 export PATH="$HOME/.gems/bin:$PATH"
 
 # -------------------- TVM -------------------- #
-export TVM_HOME=/home/sun/File/TVM/projects/tvm-org
+export TVM_HOME=/home/sun/File/TVM/projects/tvm
 export PYTHONPATH=$PYTHONPATH:$TVM_HOME/python:$TVM_HOME/topi/python:$TVM_HOME/vta/python
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$TVM_HOME/build:$TVM_HOME/3rdparty/vta-hw/build
 export C_INCLUDE_PATH=$C_INCLUDE_PATH:$TVM_HOME/include:$TVM_HOME/3rdparty/dmlc-core/include:$TVM_HOME/3rdparty/vta-hw/include:$TVM_HOME/3rdparty/dlpack/include
@@ -268,5 +281,6 @@ export TERM="xterm"
 ## ---------------------------------------- ## 
 # ---------- ADD MY PATH TO PATH ---------- #
 export PATH=$PATH:$MYPATH
-source /home/sun/.tmprc.sh
+source /home/sun/.tmprc
+source /home/sun/.dircolors
 ## ---------------------------------------- ## 

@@ -1,8 +1,10 @@
 #! /bin/zsh
+
 # SYSTEM
 alias rebash='stty sane'
 alias lo="gnome-session-quit"
-alias xpdf=evince
+alias xpdf=okular
+alias eog=gwenview
 
 # GTKWAVE
 alias gtkwave="gtkwave --dark"
@@ -27,15 +29,15 @@ alias dvel="dve -logdir /home/sun/Documents/DVEfiles"
 alias ic='virtuoso & exit'
 
 # Andriod Studio
-alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
+# alias android=$ANDROIDSTUDIO_HOME/bin/studio.sh
 
 # Vivado
 alias vivado='vivado -tempDir /home/sun/Documents/Xilinx -log /home/sun/Documents/Xilinx/vivado.log -journal /home/sun/Documents/Xilinx/vivado.jou'
-
+alias vivado_hls=vitis_hls
 # Scrcpy
 # alias cast='scrcpy --bit-rate 16M'
 
-#apt-fast
+# apt-fast
 # alias apt=apt
 
 # Default Applications Command
@@ -44,4 +46,9 @@ alias -s tgz='tar -xzvf'
 alias -s zip='unzip'
 alias -s bz2='tar -xjvf'
 alias -s rar='unrar x'
-alias -s pdf='evince'
+alias -s pdf='okular'
+alias -s png='gwenview'
+alias -s jpg='gwenview'
+alias -s svg='gwenview'
+alias -s ico='gwenview'
+alias -s bmp='gwenview'

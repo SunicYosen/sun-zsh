@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export my environment
 source $HOME/.myrc.sh
-source $HOME/.bash_aliases
+source $HOME/.zsh_aliases
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -73,6 +73,7 @@ plugins=(
   ubuntu
   zsh-completions
   zsh-syntax-highlighting
+  fbterm
 )
 
 source $ZSH/oh-my-zsh.sh
