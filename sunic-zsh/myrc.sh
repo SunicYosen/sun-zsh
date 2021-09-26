@@ -22,6 +22,20 @@
 ## -------------------- Add My environment -------------------- ##
 ## --------------------    ADD FROM HERE   -------------------- ##
 
+export SOFTWARE_DIR=/home/Software
+
+if [ ! -d "/home/SoftwareI" ]; then
+        export SOFTWARE_DIR1=$SOFTWARE_DIR
+else
+        export SOFTWARE_DIR1=/home/SoftwareI
+fi 
+
+if [ ! -d "/home/SoftwareII" ]; then
+        export SOFTWARE_DIR2=$SOFTWARE_DIR
+else 
+        export SOFTWARE_DIR2=/home/SoftwareII
+fi
+
 export LD_LIBRARY_PATH=/usr/lib
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 
@@ -32,7 +46,7 @@ export MAKEFLAGS=-j3
 export CUDA_VISIBLE_DEVICE=-1
 
 # ---------- Qt ----------#
-# export QTHOME=/home/SoftwareI/qt
+# export QTHOME=$SOFTWARE_DIR1/qt
 # export QTDIR=$QTHOME/5.15.2/gcc_64 
 # export QT_WEBKIT=true
 # export MYPATH=$MYPATH:$QTHOME/Tools/QtCreator/bin
@@ -47,12 +61,12 @@ export CUDA_VISIBLE_DEVICE=-1
 export QT_LOGGING_RULES='*=false'
 
 # ---------- OPENCV ----------# 
-export OPENCV_HOME=/home/SoftwareI/opencv
+export OPENCV_HOME=$SOFTWARE_DIR1/opencv
 export PKG_CONFIG_PATH=$OPENCV_HOME/lib/pkgconfig:$PKG_CONFIG_PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$OPENCV_HOME/lib
 
 # ---------- Latex ---------- #
-export TEXLIVEHOME=/home/SoftwareI/texlive
+export TEXLIVEHOME=$SOFTWARE_DIR1/texlive
 export MYPATH=$MYPATH:$TEXLIVEHOME/bin/x86_64-linux
 export MANPATH=$MANPATH:$TEXLIVEHOME/texmf-dist/doc/man
 export INFOPATH=$INFOPATH:$TEXLIVEHOME/texmf-dist/doc/info
@@ -60,7 +74,7 @@ export INFOPATH=$INFOPATH:$TEXLIVEHOME/texmf-dist/doc/info
 # ---------- WPS ---------- #
 
 # ---------- RISCV Tools ---------- #
-export RISCV_TOOLS=/home/SoftwareI/riscv
+export RISCV_TOOLS=$SOFTWARE_DIR1/riscv
 export RISCV64=$RISCV_TOOLS/riscv64
 export RISCV32=$RISCV_TOOLS/riscv32
 
@@ -77,7 +91,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$RISCV/lib
 # export MYPATH=$MYPATH:$RISCV_QEMU/bin
 
 # ---------- Verilator ---------- # 
-export VERILATOR_ROOT=/home/SoftwareI/verilator
+export VERILATOR_ROOT=$SOFTWARE_DIR1/verilator
 export MYPATH=$MYPATH:$VERILATOR_ROOT/bin:$VERILATOR_ROOT/share/verilator/bin
 export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:$VERILATOR_ROOT/share/pkgconfig
 export MANPATH=$MANPATH:$VERILATOR_ROOT/share/man
@@ -85,13 +99,13 @@ export CPLUS_INCLUDE_PATH=$VERILATOR_ROOT/share/verilator/include
 export VERILATOR_INC_DIR=$CPLUS_INCLUDE_PATH
 
 # ---------- MATLAB ---------- # 
-export MATLABHOME=/home/SoftwareII/Matlab
+export MATLABHOME=$SOFTWARE_DIR2/Matlab
 export MYPATH=$MYPATH:$MATLABHOME/bin
 alias matlab_nodisplay='matlab -nosplash -nodesktop'
 alias matlab_run='matlab -nosplash -nodesktop -r'
 
 # ---------- Mentor ---------- # 
-export MGC_HOME=/home/SoftwareI/mentor
+export MGC_HOME=$SOFTWARE_DIR1/mentor
 export MODELSIM_PATH=$MGC_HOME/modelsim_intel
 export QUESTASIM_PATH=$MGC_HOME/questasim
 export MYPATH=$MYPATH:$QUESTASIM_PATH/questasim/bin
@@ -99,10 +113,10 @@ export MYPATH=$MYPATH:$QUESTASIM_PATH/questasim/bin
 export MGLS_LICENSE_FILE=$MGC_HOME/license/LICENSE
 
 # ---------- UVM ---------- #
-export UVM_HOME=/home/SoftwareI/uvm
+export UVM_HOME=$SOFTWARE_DIR1/uvm
 
 # ---------- Synopsys ---------- # 
-export SYNOPSYS_HOME=/home/SoftwareI/synopsys
+export SYNOPSYS_HOME=$SOFTWARE_DIR1/synopsys
 export SYNROOT=$SYNOPSYS_HOME
 export SNPSLMD_LICENSE_FILE=27000@sun
 export LM_LICENSE_FILE=$SYNOPSYS_HOME/Licenses/synopsys.dat
@@ -177,7 +191,7 @@ export MW_HOME=$SYNOPSYS_HOME/Mikyway_v2016.03
 export MYPATH=$MYPATH:$MW_HOMW/bin/linux64
 
 # -------------------- Cadence --------------------# 
-export CADHOME=/home/SoftwareI/cadence
+export CADHOME=$SOFTWARE_DIR1/cadence
 # ---------- IC618 ----------#
 export CDS=$CADHOME/IC618
 export CDSDIR=$CDS
@@ -209,7 +223,7 @@ export CONFRMLHOME=$CADHOME/CONFRML171
 export MYPATH=$MYPATH:$CONFRMLHOME/bin:$CONFRMLHOME/tools.lnx86/bin:$CONFRMLHOME/tools.lnx86/dfII/bin
 
 ## ## ## ## VIVADO## ## ## # 
-export XILINXHOME=/home/SoftwareII/Xilinx
+export XILINXHOME=$SOFTWARE_DIR2/Xilinx
 export VIVADOHOME=$XILINXHOME/Vivado/2020.2 
 export XILINXVITIS=$XILINXHOME/Vitis/2020.2 
 export XILINXHLS=$XILINXHOME/Vitis_HLS/2020.2 
@@ -225,12 +239,12 @@ export HTML=/usr/bin/x-www-browser
 # source $XILINXHLS/settings64.sh
 
 # -------------------- IDEA -------------------- # 
-# export IDEA_HOME=/home/SoftwareI/Idea
+# export IDEA_HOME=$SOFTWARE_DIR1/Idea
 # export IDEA_ROOT=$IDEA_HOME/idea-IU-182.5107.16
 # export MYPATH=$MYPATH:$IDEA_ROOT/bin
 
 # -------------------- AndroidStudio -------------------- #
-export ANDROID_HOME=/home/SoftwareII/android
+export ANDROID_HOME=$SOFTWARE_DIR2/android
 export ANDROIDSTUDIO_HOME=$ANDROID_HOME/android-studio
 export MYPATH=$MYPATH:$ANDROIDSTUDIO_HOME/bin
 export ANDROID_SDK_HOME=$ANDROID_HOME/android-sdk
@@ -265,7 +279,7 @@ export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$TVM_HOME/include:$TVM_HOME/3rdpar
 # export FTP_PROXY=$ftp_proxy
 
 # -------------------- MyBin -------------------- #
-export MYPATH=$MYPATH:/home/SoftwareI/bin
+export MYPATH=$MYPATH:$SOFTWARE_DIR1/bin
 export MYPATH=$MYPATH:/home/sun/.local/bin
 export TERM="xterm"
 
@@ -281,6 +295,6 @@ export TERM="xterm"
 ## ---------------------------------------- ## 
 # ---------- ADD MY PATH TO PATH ---------- #
 export PATH=$PATH:$MYPATH
-source /home/sun/.tmprc
-source /home/sun/.dircolors
+# source $SUNICZSH/tmprc.sh
+source $SUNICZSH/dircolors.sh
 ## ---------------------------------------- ## 

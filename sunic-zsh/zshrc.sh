@@ -1,11 +1,15 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 # export my environment
-source $HOME/.myrc.sh
-source $HOME/.zsh_aliases
+# source $HOME/.myrc.sh
+# source $HOME/.zsh_aliases
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
+export SUNICZSH=$ZSH/sunic-zsh
+
+source $SUNICZSH/myrc.sh
+source $SUNICZSH/myalias.sh
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -71,13 +75,10 @@ plugins=(
   sbt
   sudo
   ubuntu
-  zsh-completions
-  zsh-syntax-highlighting
   fbterm
 )
 
 source $ZSH/oh-my-zsh.sh
-
 
 # User configuration
 
